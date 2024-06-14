@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shri Patel's Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/4927050bac.js" crossorigin="anonymous"></script>
+    <style>
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: 130px;
+            height: 63px;
+            padding-left: 40px;
+        }
+
+        nav {
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 2px;
+            border-radius: 30px;
+            margin-top: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: x-large;
+            font-family: "Gill Sans";
+        }
+
+        nav ul li:hover a {
+            font-size: 1.2em;
+        }
+
+        main {
+            padding: 15px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        section {
+            margin-bottom: 20px;
+            color: white;
+            text-align: left;
+        }
+
+        #about {
+            text-align: left;
+            opacity: 0; /* Initially hidden */
+            transition: opacity 1s; /* Smooth transition */
+            font-size: large;
+            flex: 1;
+            margin-right: 20px;
+            margin-left: 30px;
+        }
+
+        #aboutheader {
+            text-align: left;
+            padding-left: 80px;
+            position: relative;
+        }
+
+        .image-container {
+            position: relative;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 1s;
+            padding-top: 1px;
+            font-size: xx-large;
+        }
+
+        #istImage {
+            border: white;
+            border-radius: 5px;
+            padding: 5px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            padding-bottom: 50px;
+            margin-top: 20px;
+        }
+        .carousel-container {
+            width: 80%;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            opacity: 0;
+            margin-bottom: 100px;
+        }
+
+        .carousel-content {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            box-sizing: border-box;
+            padding: 20px;
+            background-color: #444;
+            border-radius: 10px;
+        }
+
+        .carousel-item h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.5em;
+        }
+
+        .carousel-item p {
+            font-family: 'Roboto', sans-serif;
+            font-size: 1em;
+        }
+
+        .carousel-item .article-metadata {
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        .carousel-controls {
+            position: absolute;
+            top: 50%;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            transform: translateY(-50%);
+        }
+
+        .carousel-controls button {
+            background-color: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .carousel-controls button:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+        #articleHead {
+            text-align: center;
+        }
+        #articleID {
+            margin-top: 100px;
+        }
+        #emailFooter {
+            text-align: right;
+            font-style: italic;
+            font-size: small;
+            margin-right: 70px;
+        }
+        .content-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .about-image {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #aboutImage {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px; /* Optional: add some styling */
+            opacity: 0;
+        }
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 50px;
+            background-color: #333;
+            overflow-x: hidden;
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            width: 200px;
+            overflow: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar:hover {
+            width: 250px;
+        }
+
+        .sidebar:hover .sidebar-inner {
+            opacity: 1;
+        }
+
+        .sidebar h2,
+        .sidebar .portlet {
+            padding: 10px;
+            background-color: #444;
+            margin: 10px 0;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .sidebar h2 {
+            margin: 0;
+            font-size: 1.2em;
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar .portlet h3 {
+            margin: 0;
+            font-size: 1em;
+            color: white;
+        }
+
+        .sidebar .portlet p {
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        .sidebar form p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .sidebar form label {
+            color: white;
+            font-size: 0.9em;
+        }
+
+        .sidebar form input,
+        .sidebar form textarea {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
+        }
+
+        .sidebar form button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .sidebar form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Adjust main content padding */
+        body {
+            padding-left: 50px; /* Adjust according to the collapsed width of the sidebar */
+            transition: padding-left 0.3s ease;
+        }
+
+        .sidebar:hover ~ body {
+            padding-left: 250px; /* Adjust according to the expanded width of the sidebar */
+        }
+
+
+
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="sidebar-inner">
+        <h2>Sidebar</h2>
+        <div class="portlet">
+            <h3>Contact Form</h3>
+            <form
+                    action="https://formspree.io/f/xayrrlqr"
+                    method="POST"
+            >
+                <p>
+                    <label for="name">Your Name:</label><br>
+                    <input type="text" id="name" name="name">
+                </p>
+                <p>
+                    <label for="email">Your Email:</label><br>
+                    <input type="email" id="email" name="email">
+                </p>
+                <p>
+                    <label for="message">Your Message:</label><br>
+                    <textarea id="message" name="message"></textarea>
+                </p>
+                <p>
+                    <button type="submit">Send</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+<header>
+    <img src="resources/logo.png" alt="Logo" class="logo">
+</header>
+<nav>
+    <ul>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="album.html">Album</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="mymajor.html">My Major</a></li>
+        <li><a href="weblinks.html">Weblinks</a></li>
+        <li><a href="API.html">API Data</a></li>
+
+    </ul>
+</nav>
+<main>
+    <div class="image-container">
+        <img id="istImage" src="resources/IstImage.jpg" alt="ist">
+        <div class="header-overlay">
+            <h1>Welcome To My Website</h1>
+        </div>
+    </div>
+    <div class="content-wrapper">
+        <section id="about">
+            <h2 id="aboutheader">A Little About Me</h2>
+            <p id="abouttext">I am a currently a fourth year undergraduate student at<br> The Pennsylvania State University.
+                As a data science major,<br> I have a strong passion for data analytics and working<br> with big data.<br/>
+                <br>
+                I am was born in New Brunswick, New Jersey, but grew <br>up in a suburb outside of Chicago since I was a month old.
+                <br/>
+                <br>As an aspiring data analyst, I am looking for internship opportunities <br> for the coming year. I strive to strengthen my skills and
+                <br> develop new ones to become the best data analyst I can be. <br/>
+                <br>
+                If you would like to learn more about my qualifications, please click <a href="resume.html">here.</a></p>
+        </section>
+        <div class="about-image">
+            <img src="resources/chicagoskyline.jpg" alt="About Image" id="aboutImage">
+        </div>
+    </div>
+    <section id="articleID">
+        <h2 id="articleHead">My Favorite Big Tech Articles Of The Week</h2>
+        <div class="carousel-container">
+            <div class="carousel-content">
+                <article class="carousel-item">
+                    <h2>Apple shares pop to record high after company unveils AI software</h2>
+                    <p class="article-metadata">By Ashley Capoot on June 11, 2024</p>
+                    <p>Apple shares popped 5% to a new record high of around $203 per share on Tuesday, a day after the company announced its long-awaited push into artificial intelligence at its annual developer conference on Monday.<br/>
+                        <br>
+                        Apple introduced a range of new AI features during the event, including an overhaul of its voice assistant Siri, integration with OpenAI’s ChatGPT, a range of writing assistance tools and new customizable emojis. The company pitched the features as AI for the average person, though users will likely need to upgrade their iPhones to access the tools. Learn more about this topic at<a href="https://www.bbc.com/news/world-61764873"> cnbc.com</a>.</p>
+                </article>
+                <article class="carousel-item">
+                    <h2>Apple’s new custom emoji come with climate costs</h2>
+                    <p class="article-metadata">By Justine Calma on June 11, 2024</p>
+                    <p>Soon, you’ll be able to create your own emoji and generate custom images with new AI features on Apple devices. I hate to be the bearer of bad news (and I’m guilty of grossly overusing emoji myself) — but those images could have the biggest environmental impact of all of Apple’s new AI tools.<br/>
+                        <br>
+                        Generative AI is notoriously energy-hungry, which means it leads to a lot of planet heating greenhouse gas emissions. Image generation, in particular, is one of the worst offenders. The AI arms race has already started to grow some companies’ carbon footprints. Now, new fruit emoji varietals and sketches generated by AI are likely to add to the problem. For more information, visit <a href="https://www.theverge.com/24176049/apple-ai-emoji-image-generation-climate-change">theverge.com</a>.</p>
+                </article>
+                <article class="carousel-item">
+                    <h2>Should Big Tech worry about India’s antitrust reform?</h2>
+                    <p class="article-metadata">By Reuters on June 11, 2024</p>
+                    <p>India’s proposed EU-like antitrust law will pose a fresh regulatory challenge for tech firms including Apple, Google and Meta, laying out strict compliance obligations that could affect their business models.</br>
+                        <br>
+                        The Indian government is currently examining a panel’s February report that proposed a new “Digital Competition Bill” to complement existing antitrust laws. A key U.S. lobby group has already opposed the move, fearing its business impact. Check out <a href="https://www.theguardian.com/world/2024/jun/08/global-news">retuers.com</a> for details.</p>
+                </article>
+            </div>
+            <div class="carousel-controls">
+                <button id="prevBtn">&#10094;</button>
+                <button id="nextBtn">&#10095;</button>
+            </div>
+        </div>
+    </section>
+    <section>
+        <h2></h2>
+        <p></p>
+    </section>
+    <section>
+        <h2></h2>
+        <p></p>
+    </section>
+</main>
+<footer>
+    <div class="social-icons">
+        <a href="https://github.com/Shree620" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://x.com/Shri_Patel15" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/shripatel03/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/shri-patel-8b604a17b/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p>&copy; 2024 Shri Patel. All rights reserved.</p>
+    <p id="emailFooter">Email: sbp5746@psu.edu</p>
+</footer>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        var observer = new IntersectionObserver(fadeInOnScroll, {
+            threshold: 0.1
+        });
+
+        var aboutSection = document.getElementById('about');
+        observer.observe(aboutSection);
+    });
+
+    function fadeInOnScroll(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                var section = entry.target;
+                var opacity = 0;
+                var interval = setInterval(function () {
+                    if (opacity < 1) {
+                        opacity += 0.015;
+                        section.style.opacity = opacity;
+                    } else {
+                        clearInterval(interval);
+                    }
+                }, 100);
+                observer.unobserve(entry.target); // Stop observing once it has appeared
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        var observer = new IntersectionObserver(fadeInOnScroll, {
+            threshold: 0.1
+        });
+
+        var articleIDSection = document.getElementById('articleID');
+        observer.observe(articleIDSection);
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+        var observer = new IntersectionObserver(fadeInOnScroll, {
+            threshold: 0.1
+        });
+
+        var aboutImage = document.getElementById('aboutImage');
+        observer.observe(aboutImage);
+    });
+
+    function fadeInOutHeader() {
+        var header = document.querySelector('.header-overlay');
+        var opacity = 0;
+        var intervalIn = setInterval(function () {
+            if (opacity < 1) {
+                opacity += 0.02;
+                header.style.opacity = opacity;
+            } else {
+                clearInterval(intervalIn);
+                setTimeout(function () {
+                    var intervalOut = setInterval(function () {
+                        if (opacity > 0) {
+                            opacity -= 0.02;
+                            header.style.opacity = opacity;
+                        } else {
+                            clearInterval(intervalOut);
+                        }
+                    }, 100);
+                }, 2500); // Change 2000 to the amount of time you want the header to remain fully visible
+            }
+        }, 100);
+    }
+
+    function fadeInCarousel() {
+        var carouselContainer = document.querySelector('.carousel-container');
+        var opacity = 0;
+        var interval = setInterval(function () {
+            if (opacity < 1) {
+                opacity += 0.02;
+                carouselContainer.style.opacity = opacity;
+            } else {
+                clearInterval(interval);
+            }
+        }, 50);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        fadeInCarousel();
+    });
+
+    let currentIndex = 0;
+
+    const carouselContent = document.querySelector('.carousel-content');
+    const items = document.querySelectorAll('.carousel-item');
+    const totalItems = items.length;
+
+    document.getElementById('nextBtn').addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % totalItems;
+        updateCarousel();
+    });
+
+    document.getElementById('prevBtn').addEventListener('click', () => {
+        currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+        updateCarousel();
+    });
+
+    function updateCarousel() {
+        const offset = -currentIndex * 100;
+        carouselContent.style.transform = `translateX(${offset}%)`;
+    }
+
+
+        document.addEventListener('click', function(event) {
+        var sidebar = document.querySelector('.sidebar');
+        if (!sidebar.contains(event.target)) {
+        sidebar.classList.remove('expanded');
+    }
+    });
+
+        document.querySelector('.sidebar').addEventListener('mouseenter', function() {
+        this.classList.add('expanded');
+    });
+
+        document.querySelector('.sidebar').addEventListener('mouseleave', function() {
+        this.classList.remove('expanded');
+    });
+    window.addEventListener('load', fadeInOutHeader);
+</script>
+
+</script>
+
+</body>
+</html>
