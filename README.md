@@ -1,0 +1,1 @@
+These files are my own personal website. This website is the first I have ever created and contains many different pages detailing things about me. These include my major, resume and about me. This project is also an assignment for the PSU OSIST Interest Group under Professor Fonkam.
