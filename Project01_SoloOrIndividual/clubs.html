@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shri Patel's Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/4927050bac.js" crossorigin="anonymous"></script>
+    <style>
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: 130px;
+            height: 63px;
+            padding-left: 40px;
+        }
+
+        nav {
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 2px;
+            border-radius: 30px;
+            margin-top: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: x-large;
+            font-family: "Gill Sans";
+        }
+
+        nav ul li:hover a {
+            font-size: 1.2em;
+        }
+
+        main {
+            padding: 15px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        section {
+            margin-bottom: 20px;
+            color: white;
+            text-align: left;
+        }
+
+        .image-container {
+            position: relative;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        .header-overlay {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 1s;
+            padding-top: 1px;
+            font-size: xx-large;
+        }
+
+        #istImage {
+            border: white;
+            border-radius: 5px;
+            padding: 5px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            padding-bottom: 50px;
+            margin-top: 20px;
+        }
+
+        #emailFooter {
+            text-align: right;
+            font-style: italic;
+            font-size: small;
+            margin-right: 70px;
+        }
+
+        #aboutImage {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        #myClubs {
+            text-align: center;
+            color: white;
+            font-size: xxx-large;
+        }
+
+        #noClubsStatement {
+            text-align: center;
+            font-size: large;
+            margin-top: 40px;
+        }
+
+        #clubsLeft {
+            margin-left: 150px;
+            font-size: xx-large;
+        }
+
+        .h3ClubsLeft {
+            text-align: left;
+            margin-left: 60px;
+        }
+
+        .clubsLeftParagraph {
+            margin-top: 30px;
+        }
+
+        #clubPLTW {
+            margin-left: 120px;
+            margin-top: 30px;
+        }
+
+        #h3clubsRight {
+            text-align: right;
+            font-size: xx-large;
+            margin-right: 150px;
+        }
+
+        #clubOPIST {
+            text-align: right;
+            margin-right: 60px;
+        }
+
+        #clubOPIST-p {
+            text-align: -moz-left;
+            margin-left: 800px;
+            margin-bottom: 100px;
+        }
+
+        .flex-container {
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .flex-container img {
+            margin-left: 300px; /* Space between the text and image */
+            max-width: 450px; /* Adjust as needed */
+            height: auto;
+            margin-right: 100px;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transition: opacity 5s ease-in-out;
+        }
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 50px;
+            background-color: #333;
+            overflow-x: hidden;
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            width: 200px;
+            overflow: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar:hover {
+            width: 250px;
+        }
+
+        .sidebar:hover .sidebar-inner {
+            opacity: 1;
+        }
+
+        .sidebar h2,
+        .sidebar .portlet {
+            padding: 10px;
+            background-color: #444;
+            margin: 10px 0;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .sidebar h2 {
+            margin: 0;
+            font-size: 1.2em;
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar .portlet h3 {
+            margin: 0;
+            font-size: 1em;
+            color: white;
+        }
+
+        .sidebar .portlet p {
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        .sidebar form p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .sidebar form label {
+            color: white;
+            font-size: 0.9em;
+        }
+
+        .sidebar form input,
+        .sidebar form textarea {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
+        }
+
+        .sidebar form button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .sidebar form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Adjust main content padding */
+        body {
+            padding-left: 50px; /* Adjust according to the collapsed width of the sidebar */
+            transition: padding-left 0.3s ease;
+        }
+
+        .sidebar:hover ~ body {
+            padding-left: 250px; /* Adjust according to the expanded width of the sidebar */
+        }
+
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="sidebar-inner">
+        <h2>Sidebar</h2>
+        <div class="portlet">
+            <h3>Contact Form</h3>
+            <form
+                    action="https://formspree.io/f/xayrrlqr"
+                    method="POST"
+            >
+                <p>
+                    <label for="name">Your Name:</label><br>
+                    <input type="text" id="name" name="name">
+                </p>
+                <p>
+                    <label for="email">Your Email:</label><br>
+                    <input type="email" id="email" name="email">
+                </p>
+                <p>
+                    <label for="message">Your Message:</label><br>
+                    <textarea id="message" name="message"></textarea>
+                </p>
+                <p>
+                    <button type="submit">Send</button>
+                </p>
+            </form>
+        </div>
+
+    </div>
+</div>
+<header>
+    <img src="resources/logo.png" alt="Logo" class="logo">
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="album.html">Album</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="mymajor.html">My Major</a></li>
+        <li><a href="weblinks.html">Weblinks</a></li>
+        <li><a href="API.html">API Data</a></li>
+    </ul>
+</nav>
+<main>
+    <div class="image-container">
+        <img id="istImage" src="resources/IstImage.jpg" alt="ist">
+    </div>
+    <section class="fade-in">
+        <h1 id="myClubs">My Clubs</h1>
+        <p id="noClubsStatement">At this point in time I am currently not in any clubs but lets talk about my past clubs and things I am currently doing!</p>
+        <section id="clubsLeftSection">
+            <h2 id="clubsLeft">Past Clubs</h2>
+            <h3 class="h3ClubsLeft">Bartlett High School Football Team</h3>
+            <div class="flex-container">
+                <p id="clubsLeftFootball" class="flex-container">Throughout high school, I played on my High School football team. Go Hawks!<br>
+                    I played for a total of four years. Throughout these four years, I switched<br> between three positions: left guard, middle linebacker, and left tackle.
+                    <br>
+                    <br/>
+                    Joining this club lead to tremendous cherishable memories and taught life-long<br>
+                    skills. I learned leadership skills, how to work with others, team bonding, and<br>
+                    became stronger willed. Throughout my four years, I was given the team award, <br>
+                    "All-Hawk", which I earned for showing leader qualities and showing relentless<br>
+                    hard work on and off the field. </p>
+                <img id="imageBHS" src="resources/Bhs.jpeg" alt="BHS">
+            </div>
+            <h3 id="clubPLTW">Project Lead The Way</h3>
+            <p>Project Lead The Way was a special club at my high school that revolved<br>
+                around an engineering course with the same name. In this course, we <br>
+                learned basics to many different aspects of engineering. In the actual <br>
+                club, we built upon our knowledge even more. We built 3D models on <br>
+                Autodesk Inventor, we built mechanical robots that were meant to be able<br>
+                to withstand immense damage, and we even touched upon 3D printing.<br>
+                <br/>
+                My favorite part, however, was showing around incoming freshman students<br>
+                about what we do in this club. As someone who is very passionate about<br>
+                IST and engineering, it brought me joy to help captivate the minds of<br>
+                young future engineers and plant the seed of curiosity.</p>
+            <h2 id="h3clubsRight">Current</h2>
+            <h3 id="clubOPIST">Open Source IST Interest Group</h3>
+            <p id="clubOPIST-p">The Pennsylvania State University Open Source IST Interest Group is a<br>
+                group that I have joined during the 2024 summer. Lead by Professor Mathias<br>
+                Fonkam, I am currently in training to hopefully join the research lab. The focal point<br>
+                of this group is to implement Open Source Web Development.<br>
+                <br/>
+                I am currently learning front-end web development. Throughout joining this group, I <br>
+                built upon my prior knowledge of HTML, I have learned CSS styling, and I have completed<br>
+                two LinkedIn Learning courses and gained extensive skills on JavaScript.<p/>
+
+        </section>
+    </section>
+</main>
+<script>
+    function fadeInOnScroll(entries, observer) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                observer.unobserve(entry.target); // Stop observing once it has appeared
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+        var observer = new IntersectionObserver(fadeInOnScroll, {
+            threshold: 0.1
+        });
+
+        var elements = document.querySelectorAll('.fade-in');
+        elements.forEach(element => {
+            observer.observe(element);
+        });
+    });
+    document.addEventListener('click', function(event) {
+        var sidebar = document.querySelector('.sidebar');
+        if (!sidebar.contains(event.target)) {
+            sidebar.classList.remove('expanded');
+        }
+    });
+
+    document.querySelector('.sidebar').addEventListener('mouseenter', function() {
+        this.classList.add('expanded');
+    });
+
+    document.querySelector('.sidebar').addEventListener('mouseleave', function() {
+        this.classList.remove('expanded');
+    });
+</script>
+<footer class="footer">
+    <div class="social-icons">
+        <a href="https://github.com/Shree620" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://x.com/Shri_Patel15" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/shripatel03/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/shri-patel-8b604a17b/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p>&copy; 2024 Shri Patel. All rights reserved.</p>
+    <p id="emailFooter">Email: sbp5746@psu.edu</p>
+</footer>
+</body>
+</html>

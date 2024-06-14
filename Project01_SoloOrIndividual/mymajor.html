@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shri Patel's Website</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/4927050bac.js" crossorigin="anonymous"></script>
+    <style>
+        body, h1, p {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: black;
+        }
+
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 10px;
+            width: 130px;
+            height: 63px;
+            padding-left: 40px;
+        }
+
+        nav {
+            background-color: white;
+            color: black;
+            text-align: center;
+            padding: 2px;
+            border-radius: 30px;
+            margin-top: 20px;
+        }
+
+        nav ul {
+            list-style-type: none;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            color: black;
+            text-decoration: none;
+            font-size: x-large;
+            font-family: "Gill Sans";
+        }
+
+        nav ul li:hover a {
+            font-size: 1.2em;
+        }
+
+        main {
+            padding: 15px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        section {
+            margin-bottom: 20px;
+            color: white;
+            text-align: left;
+        }
+
+        #emailFooter {
+            text-align: right;
+            font-style: italic;
+            font-size: small;
+            margin-right: 70px;
+        }
+
+        .image-container {
+            position: relative;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+        }
+
+        #istImage {
+            border: white;
+            border-radius: 5px;
+            padding: 5px;
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            padding-bottom: 50px;
+            margin-top: 20px;
+        }
+
+        #h1major {
+            text-align: center;
+            color: white;
+            font-size: xxx-large;
+        }
+
+        .myMajorP {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+        }
+
+        #h1careerPath {
+            text-align: center;
+            font-size: xxx-large;
+            color: white;
+            margin-top: 50px;
+            margin-bottom: 30px;
+        }
+
+        #careerPathp {
+            font-style: italic;
+        }
+
+        .video-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            margin-bottom: 100px;
+        }
+
+        .video-container iframe {
+            width: 80%;
+            max-width: 800px;
+            height: 450px;
+        }
+        .fade-in {
+            opacity: 0;
+            transition: opacity 5s ease-in-out;
+        }
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 50px;
+            background-color: #333;
+            overflow-x: hidden;
+            transition: width 0.3s ease;
+            z-index: 1000;
+        }
+
+        .sidebar-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            opacity: 0;
+            width: 200px;
+            overflow: hidden;
+            transition: opacity 0.3s ease;
+        }
+
+        .sidebar:hover {
+            width: 250px;
+        }
+
+        .sidebar:hover .sidebar-inner {
+            opacity: 1;
+        }
+
+        .sidebar h2,
+        .sidebar .portlet {
+            padding: 10px;
+            background-color: #444;
+            margin: 10px 0;
+            border-radius: 5px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .sidebar h2 {
+            margin: 0;
+            font-size: 1.2em;
+            color: white;
+            text-align: center;
+        }
+
+        .sidebar .portlet h3 {
+            margin: 0;
+            font-size: 1em;
+            color: white;
+        }
+
+        .sidebar .portlet p {
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        .sidebar form p {
+            margin: 0;
+            padding: 5px 0;
+        }
+
+        .sidebar form label {
+            color: white;
+            font-size: 0.9em;
+        }
+
+        .sidebar form input,
+        .sidebar form textarea {
+            width: 100%;
+            padding: 5px;
+            border: none;
+            border-radius: 3px;
+        }
+
+        .sidebar form button {
+            padding: 5px 10px;
+            border: none;
+            border-radius: 3px;
+            background-color: #007BFF;
+            color: white;
+            cursor: pointer;
+        }
+
+        .sidebar form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Adjust main content padding */
+        body {
+            padding-left: 50px; /* Adjust according to the collapsed width of the sidebar */
+            transition: padding-left 0.3s ease;
+        }
+
+        .sidebar:hover ~ body {
+            padding-left: 250px; /* Adjust according to the expanded width of the sidebar */
+        }
+
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <div class="sidebar-inner">
+        <h2>Sidebar</h2>
+        <div class="portlet">
+            <h3>Contact Form</h3>
+            <form
+                    action="https://formspree.io/f/xayrrlqr"
+                    method="POST"
+            >
+                <p>
+                    <label for="name">Your Name:</label><br>
+                    <input type="text" id="name" name="name">
+                </p>
+                <p>
+                    <label for="email">Your Email:</label><br>
+                    <input type="email" id="email" name="email">
+                </p>
+                <p>
+                    <label for="message">Your Message:</label><br>
+                    <textarea id="message" name="message"></textarea>
+                </p>
+                <p>
+                    <button type="submit">Send</button>
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+<header>
+    <img src="resources/logo.png" alt="Logo" class="logo">
+</header>
+<nav>
+    <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="clubs.html">Clubs</a></li>
+        <li><a href="album.html">Album</a></li>
+        <li><a href="resume.html">Resume</a></li>
+        <li><a href="weblinks.html">Weblinks</a></li>
+        <li><a href="API.html">API Data</a></li>
+    </ul>
+</nav>
+<main>
+    <div class="image-container">
+        <img id="istImage" src="resources/IstImage.jpg" alt="ist">
+    </div>
+    <section class="fade-in">
+    <h1 id="h1major">My Major and Desired Career Path</h1>
+    <section class="myMajorP">
+        <p>As a Pennsylvania State Undergraduate Student, I am currently a Data Science major in the<br> college of Informational Technology Systems. Data Science is a passion that
+            I have discovered while I enrolled in my first Data Science<br>
+            Course at my university. In this course, I learned several languages:</p>
+        <ul>Python-Pandas, PostgreSQl, MongoDB, Neo4J</ul>
+        <p>I have taken advantage of these languages in order to be able to create complex queries
+            which extract data from a database and CSV files and to clean up the extracted data.<br>
+            I have also developed data analysis skills so I can convey my extracted data in an easy to read format.</p>
+        <p>I hope to continue improving my data science skills so I can choose a career path as a data analyst. </p> <br>
+        <br/>
+        <p>My major requires that I spend some time participating in research or an internship in order to graduate.<br>
+            I also need to take a variety of data science courses that will help me develop my skills even further.<br>
+            Some of these include:
+        <ul>Artificial Intelligence, Programming Models for Big Data, Network Analytics</ul>
+        <h1 id="h1careerPath">Career Path</h1>
+        <p>I am committed into going into the career path for a data analyst. From the words of the Pennsylvania <br>
+            State College of IST,</p><br><br/> <p id="careerPathp">"The main duties of a Data Analyst are to perform data collection, analysis, <br>
+        interpretation, and management duties; develop rules and methodologies for data collection and analysis;<br>
+        and ensure the integrity of project data. Data analysts consult with external clients and internal staff <br>
+        to determine data management needs and objectives, and may be responsible for database design, <br>
+        administration, security, and maintenance. They prepare presentations that reflect the results of data <br>
+        analysis, and coordinate with scientists and technical experts to design and develop statistical <br>
+        analysis methodologies." </p><br><br/>
+        <p>Here is an excellent video by 365 Data Science which details what data analysts do:</p>
+        <div class="video-container">
+            <iframe src="https://www.youtube.com/embed/4hrkKaJJt-4" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </section>
+    </section>
+</main>
+<footer>
+    <div class="social-icons">
+        <a href="https://github.com/Shree620" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://x.com/Shri_Patel15" target="_blank"><i class="fab fa-twitter"></i></a>
+        <a href="https://www.instagram.com/shripatel03/" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/shri-patel-8b604a17b/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+    </div>
+    <p>&copy; 2024 Shri Patel. All rights reserved.</p>
+    <p id="emailFooter">Email: sbp5746@psu.edu</p>
+</footer>
+<script>
+    function fadeInOnScroll(entries, observer) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.style.opacity = 1;
+            observer.unobserve(entry.target); // Stop observing once it has appeared
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    var observer = new IntersectionObserver(fadeInOnScroll, {
+        threshold: 0.1
+    });
+
+    var elements = document.querySelectorAll('.fade-in');
+    elements.forEach(element => {
+        observer.observe(element);
+    });
+});
+    document.addEventListener('click', function(event) {
+        var sidebar = document.querySelector('.sidebar');
+        if (!sidebar.contains(event.target)) {
+            sidebar.classList.remove('expanded');
+        }
+    });
+
+    document.querySelector('.sidebar').addEventListener('mouseenter', function() {
+        this.classList.add('expanded');
+    });
+
+    document.querySelector('.sidebar').addEventListener('mouseleave', function() {
+        this.classList.remove('expanded');
+    });
+</script>
+</body>
+</html>
